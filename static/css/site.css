@@ -1,0 +1,18 @@
+body {
+    padding-top: 70px;
+}
+
+#content {
+    min-height: 600px;
+}
+
+#footer {
+    color: #777777;
+    font-style: italic;
+}
+
+.example {
+    font-size: 1.0em;
+    font-style: italic;
+    color: #adadad;
+}

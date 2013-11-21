@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GETALL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/site.css"/>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header id="header" class="navbar navbar-inverse navbar-fixed-top" role="header">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button"
+                        data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../" class="navbar-brand">GETALL</a>
+            </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li class="ga-nav-page active" data-page="page_zing_tv">
+                        <a href="#">Zing TV</a>
+                    </li>
+                    <li class="ga-nav-page" data-page="page_zing_mp3">
+                        <a href="#">Zing MP3</a>
+                    </li>
+                </ul>
+                <!--<ul class="nav navbar-nav navbar-right">-->
+                    <!--<li class="ga-nav-page" data-page="page_about">-->
+                        <!--<a href="#">About</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div id="content">
+        <div id="page_zing_tv" class="page">
+            <div class="container">
+                <div id="zing_tv_error"></div>
+                <p class="example">Example video series url: http://tv.zing.vn/hana-yori-dango-vuon-sao-bang</p>
+                <form id="zing_tv_form" role="form">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <div class="form-group">
+                                <input id="zing_tv_album" type="url" class="form-control input-lg"
+                                       placeholder="Enter video album url">
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Get</button>
+                        </div>
+                    </div>
+                </form>
+                <h3 class="lead">Click to download</h3>
+                <div id="zing_tv_downloads"></div>
+                <h3 class="lead">Raw links</h3>
+                <div id="zing_tv_links" contenteditable></div>
+            </div>
+        </div>
+        <div id="page_zing_mp3" class="page">
+            <div class="container">
+                <div id="zing_mp3_error"></div>
+                <p class="example">Example album url: http://mp3.zing.vn/album/Gia-Co-The-Om-Ai-Va-Khoc-Pham-Hong-Phuoc/ZWZB0ZOW.html</p>
+                <form id="zing_mp3_form" role="form">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <div class="form-group">
+                                <input id="zing_mp3_album" type="url" class="form-control input-lg"
+                                       placeholder="Enter album url">
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Get</button>
+                        </div>
+                    </div>
+                </form>
+                <h3 class="lead">Click to download</h3>
+                <div id="zing_mp3_downloads"></div>
+                <h3 class="lead">Raw links</h3>
+                <div id="zing_mp3_links" contenteditable></div>
+            </div>
+        </div>
+        <div id="page_about" class="page">
+            <div class="container">
+                <p>About myself</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" role="contentinfo">
+        <div class="container">
+            <p class="text-center">Developed by <strong>tvkkpt</strong>. Drop me an email <a href="mailto:tvkkpt@gmail.com">here!</a></p>
+        </div>
+    </footer>
+
+    <!-- Put script at the footer for faster page loading -->
+    <script src="/static/js/jquery-1.10.2.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
