@@ -1,6 +1,7 @@
 import json
 import re
 import os
+import settings
 import urlparse
 from tornado.httpclient import AsyncHTTPClient
 import tornado.ioloop
@@ -8,11 +9,6 @@ import tornado.web
 from tornado import gen
 from pyquery import PyQuery as pq
 from lxml import etree
-
-
-PROJECT_PATH = os.path.dirname(__file__)
-STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
-TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
 
 class NonCachedStaticFileHandler(tornado.web.StaticFileHandler):
@@ -28,7 +24,7 @@ class NonCachedStaticFileHandler(tornado.web.StaticFileHandler):
 
 
 class MainHandler(tornado.web.RequestHandler):
-    _template = os.path.join(TEMPLATE_PATH, 'index.html')
+    _template = os.path.join(settings.TEMPLATE_PATH, 'index.html')
 
     def get(self):
         self.render(self._template)
@@ -125,13 +121,36 @@ class ZingTvHandler(tornado.web.RequestHandler):
 
 
 application = tornado.web.Application([
-    (r'/static/(.*)', NonCachedStaticFileHandler, {'path': STATIC_PATH}),
+    (r'/static/(.*)', NonCachedStaticFileHandler,
+     {'path': settings.STATIC_PATH}),
     (r'/zingmp3', ZingMp3Handler),
     (r'/zingtv', ZingTvHandler),
     (r'/', MainHandler),
-], debug=True)
+], debug=settings.DEBUG)
 
+
+def print_usage():
+    print 'Usage: app.py listen_port'
+    print 'Example: app.py 8000'
+
+
+def print_error_and_exit(message):
+    print message
+    print_usage()
+    exit(1)
 
 if __name__ == "__main__":
-    application.listen(8888)
+    import sys
+
+    if len(sys.argv) < 2:
+        print_error_and_exit('You should define port number')
+
+    try:
+        port = int(sys.argv[1])
+        if port < 1 or port > 65535:
+            print_error_and_exit('Port number is invalid (1 -> 65535)')
+    except ValueError:
+        print_error_and_exit('Port must be integer (1 -> 65535)')
+
+    application.listen(port)
     tornado.ioloop.IOLoop.instance().start()
